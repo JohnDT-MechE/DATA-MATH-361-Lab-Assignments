@@ -1,1 +1,1 @@
-# DATA-MATH-361-Lab-Assignments
+# DATA/MATH 361 Lab Assignments
