@@ -36,7 +36,7 @@ plt.figure(figsize=(8,6))
 plt.hist(data, bins = bin_edges, edgecolor = 'black', alpha = 0.7)
 
 
-plt.xlabel('Prevalence of Anemia in Pregnant Women 2019(%)')
+plt.xlabel('Prevalence of Anemia in Pregnant Women 2019 (%)')
 plt.ylabel('Number of Countries')
 plt.title('Histogram of Prevalence of Anemia in Pregnant Women, 2019')
 
