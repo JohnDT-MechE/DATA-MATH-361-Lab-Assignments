@@ -32,11 +32,11 @@ min_value = np.min(data)
 
 ## PRINTS CALCULATED VALUES FOR MEAN, MEDIAN, STANDARD DEVIATION, MAX, AND MIN
 ## THE .2F ALLOWS FOR ONLY TWO DECIMAL PLACES TO BE SHOWN
-print(f'Mean: {mean_value:.2f}')
-print(f'Median: {median_value:.2f}')
-print(f'Standard Deviation: {std_dev:.2f}')
-print(f'Max: {max_value:.2f}')
-print(f'Minimum: {min_value:.2f}')
+print(f'Mean: {mean_value:.2f} %')
+print(f'Median: {median_value:.2f} %')
+print(f'Standard Deviation: {std_dev:.2f} %')
+print(f'Max: {max_value:.2f} %')
+print(f'Minimum: {min_value:.2f} %')
 
 ## UNIVERSAL EQUATION USED TO DETERMINE BIN WIDTH IN STATISTICS
 bin_width = (max_value - min_value) / math.sqrt(len(data))
