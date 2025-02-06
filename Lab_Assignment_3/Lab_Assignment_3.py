@@ -27,12 +27,6 @@ df = df.T
 ## CONVERTS NUMBER OF STUDENTS TO PERCENTAGE OF STUDENTS FOR BOTH SUSPENDED AND NOT SUSPENDED
 df_percent = df.div(df.sum(axis = 1), axis = 0) * 100
 
-# Create a figure (fig) and an axes (ax) using Matplotlib
-# - `fig`: The entire figure or canvas where everything (subplots, titles, legends, etc.) is drawn.
-# - `ax`: A single subplot (or axes) within the figure where the data is plotted.
-# - `plt.subplots()` returns both the figure and axes objects, allowing explicit control over the plot.
-# - `figsize=(10, 6)` sets the size of the figure in inches:
-#    * 10 is the width, and 6 is the height of the figure.
 ## CREATES A FIGURE AND AN AXES
 ## FIG DEFINES A FIGURE WHERE A PLOT IS DRAWN
 ## AX DEFINES A SINGLE SUBPLOT WITHIN THE FIGURE WHERE THE DATA WILL BE PLOTTED
@@ -76,20 +70,32 @@ import pandas as pd
 url = 'https://raw.githubusercontent.com/JohnDT-MechE/DATA-MATH-361-Lab-Assignments/2b392369cdfa92927b351f6f749aca9cbd02a60d/Lab_Assignment_3/Titanic.csv'
 df = pd.read_csv(url)
 
-
+## CREATES A PIVOT TABLE SUMMARIZING SURVIVAL OUTCOMES BY CLASS AND SEX
+## INDEX GROUPS DATA BY PASSENGER CLASS
+## COLUMNS GROUPS DATA BY SEX AND OUTCOME
+## AGGFUNC = 'SIZE' COUNTS THE NUMBER OF OCCURENCES IN EACH CATEGORY
+## FILL VALUE ENSURES ANY MISSING VALUES ARE REPLACED WITH ZERO
 outcome_table = df.pivot_table(
-    index = ['Class', 'Sex'], 
-    columns = 'Outcome', 
+    index = 'Class', 
+    columns = ['Sex', 'Outcome'], 
     aggfunc = 'size', 
     fill_value = 0
 )
 
-#total_table = df. pivot_table(
-    #index = ['Class', 'Sex'],
-    #aggfunc = 'size'
-    #fill_value = 0
-#)
+## CALCULATES THE TOTAL NUMBER OF MALES
+## SELECTS THE MALE COLUMN AND CALCULATES THE SUM ACROSS THE ROW (TOTAL MALES PER CLASS)
+## CREATES A NEW COLUMN 'TOTAL MALES'
+total_male = outcome_table['male'].sum(axis = 1)
+outcome_table['Total Male'] = total_male
 
+## CALCULATES THE TOTAL NUMBER OF FEMALES
+## SELECTS THE FEMALE COLUMN AND CALCULATES THE SUM ACROSS THE ROW (TOTAL FEMALES PER CLASS)
+## CREATES A NEW COLUMN 'TOTAL FEMALES'
+total_female = outcome_table['female'].sum(axis = 1)
+outcome_table['Total Female'] = total_female
 
+## ADDS A TOTAL ROW ('TOTAL') AT THE BOTTOM THAT SUMS ALL COLUMNS
+outcome_table.loc['total'] = outcome_table.sum()
+
+## PRINTS THE FINAL PIVOT TABLE
 print(outcome_table)
-#print(total_table)
