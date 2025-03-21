@@ -2,74 +2,77 @@
 ### John Dominguez-Trujillo
 
 ### Activity 1
+
+## IMPORTS ESSENTIAL LIBRARIES
+## SCIPY.STATS IS A SCIPY LIBRARY THAT PROVIDES VARIOUS STATISTICAL FUNCTIONS SUCH AS PROBABILITY DISTRIBUTIONS, STATISTICAL TESTS, AND DESCRIPTIVE STATISTICS
+## NUMPY IS A PYTHON LIBRARY THAT ADDS SUPPORT FOR USING AND HANDLING MULTI-DIMENSIONAL ARRAYS AND MATRICES AND ALLOWS FOR HIHG-LEVEL MATHEMATICAL FUNCTIONS TO BE PERFORMED ON THESE ARRAYS/MATRICES
 import scipy.stats as stats
 import numpy as np
 
-##EXPLANATIONS: Import necessary libraries. 
-## scipy.stats for statistical functions, numpy for numerical operations.
+## DEFINE SAMPLE SIZE, GIVEN VALUES, AND NULL HYPOTHESES
+sample_size = 9593  ## TOTAL SURVEYED
+successes = 4125    ## TOTAL IN FAVOR OF MASKS
+p0 = 0.45           ## NULL HYPOTHESIS PROPORTION
 
-# Part 1: Hypothesis Test for Proportion (Mask-Wearing Support)
-
-##EXPLANATIONS: Define known values from the problem statement.
-sample_size = 9593  # Total surveyed people
-successes = 4125  # People who agreed on mask importance
-p0 = 0.45  # Null hypothesis proportion
-
-##EXPLANATIONS: Compute sample proportion.
+## COMPUTE SAMPLE PROPORTION
 p_hat = successes / sample_size
 
-##EXPLANATIONS: Compute standard error for proportion test.
+## COMPUTE STANDARD ERROR FOR ONE SAMPLE CATEGORICAL HYPOTHESES TEST
 standard_error = np.sqrt((p0 * (1 - p0)) / sample_size)
 
-##EXPLANATIONS: Compute z-score.
+## COMPUTE Z-SCORE
 z_score = (p_hat - p0) / standard_error
 
-##EXPLANATIONS: Compute p-value (one-tailed test, since we test if it's significantly fewer).
+## COMPUTE P-VALUE, ONE-TAILED TEST SINCE WE ARE TESTING IF IT SUPPORT IS SIGNIFICANTLY FEWER THAN THE NULL HYPOTHESIS PROPORTION
 p_value = stats.norm.cdf(z_score)
 
-##EXPLANATIONS: Print the results.
-print("Part 1: Hypothesis Test for Proportion")
-print(f"Sample Proportion: {p_hat:.4f}")
-print(f"Z-score: {z_score:.4f}")
-print(f"P-value: {p_value:.4f}")
+## PRINT RESULTING Z-SCORE AND P-VALUE
+print('Part 1: Hypothesis Test for Proportion\n')
+print(f'Z-score: {z_score:.6f}')
+print(f'P-value: {p_value:.6f}')
 
-##EXPLANATIONS: Interpret results.
-alpha = 0.05  # Significance level
+## INTERPRET P-VALUE AND DETERMINE CONCLUSIONS BASED ON THE STATISTICAL EVIDENCE
+alpha = 0.05    ## SIGNIFICANCE LEVEL
 if p_value < alpha:
-    print("Reject the null hypothesis: Significantly fewer than 45% support mask-wearing.")
+    print('Reject the Null Hypothesis: Significantly fewer than 45% support mask-wearing.')
 else:
-    print("Fail to reject the null hypothesis: No significant evidence of fewer than 45% support.")
+    print('Fail to reject the null hypothesis: No significant evidence of fewer than 45% support.')
 
 
-# Activity 2
+### Activity 2
 
+## IMPORTS ESSENTIAL LIBRARIES
+## SCIPY.STATS IS A SCIPY LIBRARY THAT PROVIDES VARIOUS STATISTICAL FUNCTIONS SUCH AS PROBABILITY DISTRIBUTIONS, STATISTICAL TESTS, AND DESCRIPTIVE STATISTICS
+## NUMPY IS A PYTHON LIBRARY THAT ADDS SUPPORT FOR USING AND HANDLING MULTI-DIMENSIONAL ARRAYS AND MATRICES AND ALLOWS FOR HIHG-LEVEL MATHEMATICAL FUNCTIONS TO BE PERFORMED ON THESE ARRAYS/MATRICES
 import scipy.stats as stats
 import numpy as np
 
 ##EXPLANATIONS: Define given values.
-sample_mean = 3.395  # Observed mean inflation rate
-sample_std = 0.22  # Standard deviation of sample
-n = 12  # Number of months
-mu0 = 3.0  # Predicted mean inflation rate
+## DEFINE SAMPLE MEAN, SAMPLE STANDARD DEVIATION, N, AND NULL HYPOTHESIS AVERAGE
+sample_mean = 3.395 ## OBSERVED MEAN INFLATION RATE
+sample_std = 0.22   ## STANDARD DEVIATION OF SAMPLE
+n = 12              ## NUMBER OF MONTHS SAMPLED
+mu0 = 3.0           ## PREDICTED MEAN INFLATION RATE
 
-##EXPLANATIONS: Compute standard error for mean test.
+## COMPUTE STANDARD ERROR FOR ONE SAMPLE QUANTITATIVE HYPOTHESIS TEST
 standard_error = sample_std / np.sqrt(n)
 
-##EXPLANATIONS: Compute t-score.
+## COMPUTE T-SCORE
 t_score = (sample_mean - mu0) / standard_error
 
-##EXPLANATIONS: Compute p-value (two-tailed test since we test if it's different, not just higher or lower).
+## COMPUTE P-VALUE, MULTIPLIED BY TWO FOR TWO-TAILED TEST SINCE WE ARE TESTING IF IT IS DIFFERENT FROM THE NULL HYPOTHESIS
 p_value = 2 * (1 - stats.t.cdf(abs(t_score), df=n-1))
 
-##EXPLANATIONS: Print the results.
-print("\nPart 2: Hypothesis Test for Mean Inflation Rate")
-print(f"Sample Mean: {sample_mean:.4f}%")
-print(f"T-score: {t_score:.4f}")
-print(f"P-value: {p_value:.4f}")
+## PRINT RESULTING T-SCORE, P-VALUE, SAMPLE MEAN, AND NULL HYPOTHESIS MEAN
+print("\nPart 2: Hypothesis Test for Mean Inflation Rate\n")
+print(f"T-score: {t_score:.6f}")
+print(f"P-value: {p_value:.6f}")
+print(f"Sample Mean: {sample_mean:.3f}")
+print(f'Null Hypothesis Mean: {mu0:.1f}')
 
-##EXPLANATIONS: Interpret results.
+## INTERPRET P-VALUE AND DETERMINE CONCLUSIONS BASED ON THE STATISTICAL EVIDENCE
+alpha = 0.05    ## SIGNIFICANCE LEVEL
 if p_value < alpha:
     print("Reject the null hypothesis: Mean inflation rate significantly differs from 3%.")
 else:
     print("Fail to reject the null hypothesis: No significant evidence that inflation rate differs from 3%.")
-
