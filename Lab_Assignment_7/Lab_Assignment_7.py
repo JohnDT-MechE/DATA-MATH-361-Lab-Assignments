@@ -36,7 +36,7 @@ alpha = 0.05    ## SIGNIFICANCE LEVEL
 if p_value < alpha:
     print('Reject the Null Hypothesis: Significantly fewer than 45% support mask-wearing.')
 else:
-    print('Fail to reject the null hypothesis: No significant evidence of fewer than 45% support.')
+    print('Fail to Reject the Null Hypothesis: No significant evidence of fewer than 45% support.')
 
 
 ### Activity 2
@@ -64,15 +64,15 @@ t_score = (sample_mean - mu0) / standard_error
 p_value = 2 * (1 - stats.t.cdf(abs(t_score), df=n-1))
 
 ## PRINT RESULTING T-SCORE, P-VALUE, SAMPLE MEAN, AND NULL HYPOTHESIS MEAN
-print("\n\nPart 2: Hypothesis Test for Mean Inflation Rate\n")
-print(f"T-score: {t_score:.6f}")
-print(f"P-value: {p_value:.6f}")
-print(f"Sample Mean: {sample_mean:.3f}")
+print('\n\nPart 2: Hypothesis Test for Mean Inflation Rate\n')
+print(f'T-score: {t_score:.6f}')
+print(f'P-value: {p_value:.6f}')
+print(f'Sample Mean: {sample_mean:.3f}')
 print(f'Null Hypothesis Mean: {mu0:.1f}')
 
 ## INTERPRET P-VALUE AND DETERMINE CONCLUSIONS BASED ON THE STATISTICAL EVIDENCE
 alpha = 0.05    ## SIGNIFICANCE LEVEL
 if p_value < alpha:
-    print("Reject the null hypothesis: Mean inflation rate significantly differs from 3%.")
+    print('Reject the Null Hypothesis: Mean inflation rate significantly differs from 3%.')
 else:
-    print("Fail to reject the null hypothesis: No significant evidence that inflation rate differs from 3%.")
+    print('Fail to Reject the Null Hypothesis: No significant evidence that inflation rate differs from 3%.')
