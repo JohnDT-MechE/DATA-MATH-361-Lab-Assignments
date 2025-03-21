@@ -1,4 +1,4 @@
-### Lab Assignment 6
+### Lab Assignment 7
 ### John Dominguez-Trujillo
 
 ### Activity 1
