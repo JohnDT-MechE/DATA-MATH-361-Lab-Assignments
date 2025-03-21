@@ -64,7 +64,7 @@ t_score = (sample_mean - mu0) / standard_error
 p_value = 2 * (1 - stats.t.cdf(abs(t_score), df=n-1))
 
 ## PRINT RESULTING T-SCORE, P-VALUE, SAMPLE MEAN, AND NULL HYPOTHESIS MEAN
-print("\nPart 2: Hypothesis Test for Mean Inflation Rate\n")
+print("\n\nPart 2: Hypothesis Test for Mean Inflation Rate\n")
 print(f"T-score: {t_score:.6f}")
 print(f"P-value: {p_value:.6f}")
 print(f"Sample Mean: {sample_mean:.3f}")
