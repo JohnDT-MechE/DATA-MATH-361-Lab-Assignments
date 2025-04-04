@@ -79,4 +79,3 @@ print(f"Equation of the Best Fit Line: y = {slope:.5f}x + {intercept:.5f}")
 
 ## PRINTS THE CALCULATED R² VALUE TO THE OUTPUT TERMINAL AND LIMITS THE R² VALUE TO HAVE ONLY 3 DECIMAL DIGITS
 print(f"R² Value: {r_squared:.3f}")
-
