@@ -3,15 +3,18 @@
 
 ### Activity 1
 
-# Lab Assignment 11 - Regression Analysis on Hurricane Damage
-
+## IMPORTS ESSENTIAL LIBRARIES
+## PANDAS IS A LIBRARY USED FOR DATA MANIPULATION, ANALYSIS, AND DATA STRUCTURES
+## STATSMODELS IS A LIBRARY USED FOR ESTIMATING STATISTICAL MODELS AND PERFORMING REGRESSION ANALYSIS, INCLUDING GENERATING REGRESSION TABLES
+## STATS MODELS FORMULA API (SMF) ALLOWS LINEAR MODELS TO BE SPECIFIED USING R-LIKE FORMULAS
 import pandas as pd
 import statsmodels.api as sm
 import statsmodels.formula.api as smf
 
-# Load data
-url = 
-df = pd.read_csv("/mnt/data/Hurricanes 2024 data.csv")
+## LOADS DATA FROM CSV INTO A VARIABLE
+## USING A URL THAT LINKS DIRECTLY TO THE CSV FILE IN MY GITHUB SO ANYONE CAN ACCESS IT
+url = 'https://raw.githubusercontent.com/JohnDT-MechE/DATA-MATH-361-Lab-Assignments/refs/heads/main/Lab_Assignment_11/Hurricanes%202024%20data.csv'
+df = pd.read_csv(url)
 
 # Drop unnecessary columns and NaN rows if any
 df = df[["Year", "US Pop (millions)", "Adjusted Costs (billions USD 2024)"]].dropna()
