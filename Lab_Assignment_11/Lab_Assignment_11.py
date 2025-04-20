@@ -16,29 +16,36 @@ import statsmodels.formula.api as smf
 url = 'https://raw.githubusercontent.com/JohnDT-MechE/DATA-MATH-361-Lab-Assignments/refs/heads/main/Lab_Assignment_11/Hurricanes%202024%20data.csv'
 df = pd.read_csv(url)
 
-# Drop unnecessary columns and NaN rows if any
+## THIS SELECTS SPECIFIC COLUMNS FROM THE DATAFRAME AND REMOVES ANY ROWS THAT CONTAIN MISSING VALUES
 df = df[["Year", "US Pop (millions)", "Adjusted Costs (billions USD 2024)"]].dropna()
 
-# PART 1.1: Regression of Adjusted Costs on Year
 
-## BUILDING THE FIRST MODEL: COST ~ YEAR
-## Define the regression formula
+## 1.1 REGRESSION TABLE OF ADJUSTED COSTS AGAINST YEAR
+
+## THIS USES STATSMODELS FORMULA API TO FIT A LINEAR REGRESSION MODEL PREDICTING ADJUSTED COSTS BASED ON YEAR
+## .FIT() TRAINS THE MODEL ON THE DATA
 model1 = smf.ols('Q("Adjusted Costs (billions USD 2024)") ~ Year', data=df).fit()
 
-## DISPLAYING THE REGRESSION TABLE
+## PRINTS A TITLE LINE TO IMPROVE READABILITY OF OUTPUT
 print("\n--- Regression 1: Adjusted Costs vs. Year ---")
+
+## PRINTS THE FULL REGRESSION TABLE TO THE OUTPUT TERMINAL
 print(model1.summary())
 
-# PART 1.2: Regression of Adjusted Costs on US Population
 
-## ONLY DIFFERENCE: Replace 'Year' with 'US Pop (millions)' in the formula
+## 1.2 REGRESSION TABLE OF ADJUSTED COSTS AGAINST US POPULATION
+
+## THIS USES STATSMODELS FORMULA API TO FIT A LINEAR REGRESSION MODEL PREDICTING ADJUSTED COSTS BASED ON US POPULATION
+## DIFFERENCE IS THAT THE PREDICTOR IS NOW US POPULATION
 model2 = smf.ols('Q("Adjusted Costs (billions USD 2024)") ~ Q("US Pop (millions)")', data=df).fit()
 print("\n--- Regression 2: Adjusted Costs vs. US Population ---")
 print(model2.summary())
 
-# PART 1.3: Regression of Adjusted Costs on Year and US Population
 
-## THIS MODEL USES BOTH VARIABLES
+## 1.2 REGRESSION TABLE OF ADJUSTED COSTS AGAINST YEAR AND US POPULATION
+
+## THIS USES STATSMODELS FORMULA API TO FIT A LINEAR REGRESSION MODEL PREDICTING ADJUSTED COSTS BASED ON YEAR AND US POPULATION
+## DIFFERENCE IS THAT THE PREDICTOR IS NOW YEAR AND US POPULATION
 model3 = smf.ols('Q("Adjusted Costs (billions USD 2024)") ~ Year + Q("US Pop (millions)")', data=df).fit()
 print("\n--- Regression 3: Adjusted Costs vs. Year and US Population ---")
 print(model3.summary())
